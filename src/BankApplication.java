@@ -1,8 +1,5 @@
 package lesson_15.homework;
 
-
-
-
 import lesson_15.homework.exceptions.WrongAccountException;
 import lesson_15.homework.exceptions.WrongCurrencyException;
 import lesson_15.homework.exceptions.WrongOperationException;
@@ -22,9 +19,7 @@ public class BankApplication {
         add(new Account("accountId006", 50, "USD"));
     }};
 
-
     public void process(String accountId, int amount, String currency) throws Exception {
-
         accounts.stream().filter(account -> account.getId().equals(accountId))
                 .findAny().orElseThrow(WrongAccountException::new);
 
@@ -36,7 +31,6 @@ public class BankApplication {
                 .filter(account -> account.getCurrency().equals(currency))
                 .filter(account -> account.getBalance() >= amount)
                 .findAny().orElseThrow(WrongOperationException::new);
-
 
         Account desiredAccount = accounts.stream()
                 .filter(account -> account.getId().equals(accountId))
@@ -53,3 +47,7 @@ public class BankApplication {
         desiredAccount.setBalance(desiredAccount.getBalance() - amount);
     }
 }
+
+
+
+
